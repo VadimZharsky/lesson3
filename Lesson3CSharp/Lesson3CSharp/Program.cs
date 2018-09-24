@@ -10,6 +10,8 @@ namespace Lesson3CSharp
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("::");
+            Console.ReadKey();
         }
     }
 }
