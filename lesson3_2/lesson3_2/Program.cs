@@ -29,7 +29,7 @@ namespace lesson3_2
             Console.WriteLine("Payments by month");
             for (int i = 1; i <=12; i++)
             {
-                Console.WriteLine(i + " Month: " + res + " BYN");
+                Console.WriteLine(i + " Month: " + res + "  BYN");
                 amount += res;
             }
             Console.WriteLine("Total amount of payments is: "+amount);
