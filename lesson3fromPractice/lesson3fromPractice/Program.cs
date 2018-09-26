@@ -10,7 +10,7 @@ namespace lesson3fromPractice
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("please select an exercise 1)1-5 or 2)6-7");
+            Console.WriteLine("please select an exercise 1)1-5 or 2)6-7 ");
             byte selected = Convert.ToByte(Console.ReadLine());
             if (selected == 1) { WithTwoNumbers(); }
             else if (selected == 2) { WithFiveNumbers(); }
