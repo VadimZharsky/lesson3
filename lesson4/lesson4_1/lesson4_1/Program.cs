@@ -32,7 +32,7 @@ namespace lesson4_1
             }
             catch (Exception ex)
             {
-                Console.WriteLine("incorrect input data");
+                Console.WriteLine(" incorrect input data");
             }
 
             Console.ReadKey();
