@@ -8,7 +8,7 @@ namespace player
         public bool locked, isPlaying = false;
         
         public string songName, author, year, lyrics;
-
+        List<string> received = new List<string>();
         public Song(string songName, string author, string year, string lyrics)
         {
             this.songName = songName;
@@ -18,8 +18,13 @@ namespace player
                 this.lyrics = lyrics;
             else
                 this.lyrics = "some lyrics";
-            new Playlist(songName, author, year, lyrics);
-            SongAdded(this.songName, this.author, this.year,this.lyrics);
+            
+        }
+        public Song(List<string> received)
+        {
+            this.received = received;
+            foreach(string str in this.received)
+            Console.WriteLine(str+":received");
         }
         public bool Lock()
         {
@@ -45,13 +50,13 @@ namespace player
             }
             
         }
-        void Logger(string text)
+        public void Add(object newToPlay)
+        {
+            newToPlay.ToString();
+        }
+        private void Logger(string text)
         {
             Console.WriteLine(text);
-        }
-        private Playlist SongAdded(string songName, string author, string year, string lyrics)
-        {
-            return new Playlist (songName, author, year, lyrics);
         }
 
 

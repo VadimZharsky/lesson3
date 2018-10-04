@@ -8,23 +8,29 @@ namespace player
 {
      class Playlist
     {
-        List<Playlist> songsAdded = new List<Playlist>();
-        public string songName, author, year, lyrics;
+        List<string> bySong = new List<string>();
+        List<string> byAuthor = new List<string>();
 
-         public Playlist(string songName, string author, string year, string lyrics)
+        public Playlist()
         {
-            this.songName = songName;
-            this.author = author;
-            this.year = year;
-            this.lyrics = lyrics;
-            
         }
-        public void observer()
+        public Playlist(List<string> bySong, List<string> byAuthor)
         {
-            foreach (object song in songsAdded)
+            this.bySong = bySong;
+            this.byAuthor = byAuthor;
+
+        }
+        public void Observer()
+        {
+            foreach (string s in byAuthor)
             {
-                Console.WriteLine(song.ToString());
+                Console.WriteLine(s);
             }
+            foreach (string s in bySong)
+            {
+                Console.WriteLine(s);
+            }
+            Song sent = new Song(bySong);
         }
     }
 }
