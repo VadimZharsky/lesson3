@@ -6,26 +6,29 @@ namespace player
     public class Song
     {
         public bool locked, isPlaying = false;
+        public string songName, author, year, lyrics, genre;
         
-        public string songName, author, year, lyrics;
         List<string> received = new List<string>();
-        public Song(string songName, string author, string year, string lyrics)
+
+        public Song(string songName, string author, string year, string lyrics, string genre)
         {
             this.songName = songName;
             this.author = author;
             this.year = year;
-            if (lyrics.Length > 0)
-                this.lyrics = lyrics;
-            else
-                this.lyrics = "some lyrics";
-            
+            this.lyrics = lyrics;
+            this.genre = genre;
         }
+
+
         public Song(List<string> received)
         {
+            Console.WriteLine("\n:::received Playlist:::");
             this.received = received;
             foreach(string str in this.received)
-            Console.WriteLine(str+":received");
+            Console.WriteLine(str);
         }
+
+
         public bool Lock()
         {
             Logger("player was locked");
