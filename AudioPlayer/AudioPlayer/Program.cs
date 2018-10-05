@@ -46,8 +46,13 @@ namespace AudioPlayer
             songlist.forDuration(duration);
             FullDuration(duration);
             PlayerProperties volume = new PlayerProperties();
-            volume.Volume = 101;
-            Texter(volume.Volume.ToString());
+            volume.Volume = 12;
+            for (int i = 0; i < 15; i++)
+            {
+                volume.VolumeDown();
+                Texter($"now volume is: {volume.Volume.ToString()}");
+            }
+            
             
             Console.ReadKey();
         }

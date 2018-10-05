@@ -23,5 +23,13 @@ namespace AudioPlayer
                 else { volume = 0; }
             }
         }
+        public void VolumeUp()
+        {
+            Volume++;
+        }
+        public void VolumeDown()
+        {
+            Volume--;
+        }
     }
 }
