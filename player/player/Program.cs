@@ -10,7 +10,7 @@ namespace player
     {
         static void Main(string[] args)
         {
-            List<Song> songs = new List<Song>(9);
+            List<Song> songs = new List<Song>(10);
             List<string> songName = new List<string>(songs.Capacity);
             List<string> byAuthor = new List<string>(songs.Capacity);
             List<string> byYear = new List<string>(songs.Capacity);
@@ -23,9 +23,8 @@ namespace player
             songs.Add(new Song( "Solitude depth" ,  "Sterbend",  "1990", "", "dsbm"));
             songs.Add(new Song( "Keep Rising" ,  "Group Home",  "2016", "", "hiphop" ));
             songs.Add(new Song( "Orchidea" ,  "Kauan",  "2010", "", "atmospheric doom/dark"));
-            songs.Add(new Song("Younger Dryas" , "Linea Aspera", "2005", "", "minimalSynth/darkwave" ));
-
-            //songs.Add(new Song(){"Younger Dryas", "Linea Aspera", "2005", "", "minimalSynth/darkwave"});
+            songs.Add(new Song("Younger Dryas", "Linea Aspera", "2005", "", "minimalSynth/darkwave"));
+            songs.Add(new Song("Younger Dryas", "Linea Aspera", "2005", "", "minimalSynth/darkwave"));
             Text(songs[0].locked.ToString());
             songs[0].Lock();
             Text(songs[0].locked.ToString());
