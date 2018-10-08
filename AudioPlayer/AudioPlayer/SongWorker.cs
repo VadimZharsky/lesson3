@@ -18,7 +18,10 @@ namespace AudioPlayer
 
         public int NumSong
         {
-            get => numSong;
+            get
+            {
+                return numSong;
+            }
             set
             {
                 if (value >= songNames.Count - 1)
@@ -60,14 +63,16 @@ namespace AudioPlayer
         }
         public string PlayNext()
         {
+            numSong++;
             Console.WriteLine("Playing songs {songNames[numSong]}");
-            return songNames[numSong+1];
+            return songNames[numSong];
 
         }
         public string PlayPrevious()
         {
+            numSong--;
             Console.WriteLine("Playing songs {songNames[numSong]}");
-            return songNames[numSong-1];
+            return songNames[numSong];
         }
         public void ShowSongs()
         {
