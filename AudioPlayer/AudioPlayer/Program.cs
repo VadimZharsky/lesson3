@@ -10,28 +10,10 @@ namespace AudioPlayer
     {
         static void Main(string[] args)
         {
-            List<Song> songs = new List<Song>();
-            List<string> songNames = new List<string>(songs.Capacity);
-            List<string> artist = new List<string>(songs.Capacity);
-            List<string> genre = new List<string>(songs.Capacity);
-            List<double> duration = new List<double>(songs.Capacity);
-            songs.Add(new Song("aux absents", "FonkyFamily", "1998", "", "hiphop",4.25));
-            songs.Add(new Song("In the name of Amun", "Nile", "2007", "", "technicalDeath",3.44));
-            songs.Add(new Song("drowning", "Sixth June", "2014", "", "minimalSynth/darkwave",5.14));
-            songs.Add(new Song("More days to come", "e-life", "2001", "", "hiphop",2.25));
-            songs.Add(new Song("Anybody", "Currensy", "2000", "", "hiphop",3.14));
-            songs.Add(new Song("Solitude depth", "Sterbend", "1990", "", "dsbm", 3.40));
-            songs.Add(new Song("Keep Rising", "Group Home", "2016", "", "hiphop", 4.13));
-            songs.Add(new Song("Orchidea", "Kauan", "2010", "", "atmospheric doom/dark", 5.57));
+            
 
-            for (int i = 0; i < songs.Capacity ; i++)
-            {
-                songNames.Add(songs[i].songName);
-                artist.Add(songs[i].artist);
-                genre.Add(songs[i].genre);
-                duration.Add(songs[i].duration);
-            }
-            Texter("==================");
+
+            /*Texter("==================");
 
             Song songlist = new Song(songNames);
             songlist.SelectedList(songNames);
@@ -52,8 +34,8 @@ namespace AudioPlayer
                 volume.VolumeDown();
                 Texter($"now volume is: {volume.Volume.ToString()}");
             }
-            
-            
+            */
+            PlayerCommand.Command();
             Console.ReadKey();
         }
         public static void Texter(string s)
