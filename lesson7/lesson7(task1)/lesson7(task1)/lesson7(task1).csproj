@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2867E78E-800A-4007-81F8-4A7AAEBA49E0}</ProjectGuid>
+    <ProjectGuid>{1F1CDCA1-46FC-4D58-BFDD-2B73A8370989}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>lesson6_arraysort_</RootNamespace>
-    <AssemblyName>lesson6%28arraysort%29</AssemblyName>
+    <RootNamespace>lesson7_task1_</RootNamespace>
+    <AssemblyName>lesson7%28task1%29</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

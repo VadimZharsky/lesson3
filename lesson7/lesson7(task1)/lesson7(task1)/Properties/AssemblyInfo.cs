@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("lesson6(pyatnashki)")]
+[assembly: AssemblyTitle("lesson7(task1)")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("lesson6(pyatnashki)")]
+[assembly: AssemblyProduct("lesson7(task1)")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("52a00fbb-8589-4b34-8cc4-ae4378706fa8")]
+[assembly: Guid("1f1cdca1-46fc-4d58-bfdd-2b73a8370989")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
