@@ -8,12 +8,15 @@ namespace AudioPlayer
 {
     class SongWorker
     {
+        List<Song> songs = new List<Song>();
+        List<Song> songsToPlay = new List<Song>();
         List<string> genre = new List<string>();
         List<string> songNames = new List<string>();
         List<string> artist = new List<string>();
         List<string> year = new List<string>();
         List<double> duration = new List<double>();
         List<string> sorted = new List<string>();
+        private bool playOrNot = false;
         private int numSong;
 
         public int NumSong
@@ -37,7 +40,7 @@ namespace AudioPlayer
         }
         public void UploadSongs()
         {
-            List<Song> songs = new List<Song>();
+            
             songs.Add(new Song("aux absents", "FonkyFamily", "1998", "", "hiphop", 4.25));
             songs.Add(new Song("In the name of Amun", "Nile", "2007", "", "technicalDeath", 3.44));
             songs.Add(new Song("drowning", "Sixth June", "2014", "", "minimalSynth/darkwave", 5.14));
@@ -57,22 +60,48 @@ namespace AudioPlayer
         }
         public string ToPlay()
         {
-            Console.WriteLine($"Playing songs {songNames[numSong]}");
-            return songNames[numSong];
-
+            
+            songsToPlay = Playlist.SongsToPlay(songs);
+            
+            if (songsToPlay.Count > 0)
+            {
+                Console.WriteLine($"Playing songs {songsToPlay[numSong].songName}");
+                playOrNot = true;
+                return songsToPlay[numSong].songName;    
+            }
+            else
+            {
+                Console.WriteLine($"there is no any song. please before upload songs");
+                return "";
+            }
+            
+        }
+        public  void Stop(bool finished)
+        {
+            playOrNot = finished;
         }
         public string PlayNext()
         {
-            numSong++;
-            Console.WriteLine("Playing songs {songNames[numSong]}");
-            return songNames[numSong];
+            if (numSong + 1 < songs.Count && playOrNot == true)
+            {
+                numSong++;
+                Console.WriteLine($"Playing songs {songsToPlay[numSong].songName}");
+                return songsToPlay[numSong].songName;
+            }
+            else { return ""; }
+            
 
         }
         public string PlayPrevious()
         {
-            numSong--;
-            Console.WriteLine("Playing songs {songNames[numSong]}");
-            return songNames[numSong];
+            if (numSong - 1 >= 0 && playOrNot == true)
+            {
+                numSong--;
+                Console.WriteLine($"Playing songs {songsToPlay[numSong].songName}");
+                return songsToPlay[numSong].songName;
+            }
+            else { return ""; }
+            
         }
         public void ShowSongs()
         {
@@ -81,25 +110,23 @@ namespace AudioPlayer
             switch (choise)
             {
                 case 1:
-                    Observer(songNames);
+                    foreach (Song song in songs)
+                        Console.WriteLine(song.songName); ;
                     break;
                 case 2:
-                    Observer(artist);
+                    foreach (Song song in songs)
+                        Console.WriteLine(song.artist); ;
                     break;
                 case 3:
-                    Observer(year);
+                    foreach (Song song in songs)
+                        Console.WriteLine(song.year); ;
                     break;
                 case 4:
-                    Observer(genre);
+                    foreach (Song song in songs)
+                        Console.WriteLine(song.genre); ;
                     break;
             }
         }
-        private void Observer(List<string> show)
-        {
-            foreach (string s in show)
-                Console.WriteLine(s);
-        }
-
         public void SortSongs()
         {
             Console.WriteLine("sort by :\n1.Song\n2.Artist\n3.year\n4.genre");

@@ -8,5 +8,9 @@ namespace AudioPlayer
 {
     class Playlist
     {
+        internal static List<Song> SongsToPlay(List<Song> songs)
+        {
+            return songs;
+        }
     }
 }

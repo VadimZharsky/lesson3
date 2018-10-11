@@ -9,8 +9,8 @@ namespace AudioPlayer
      class PlayerCommand
     {
         public static List<string> keys = new List<string>(4)
-        { "lock", "unnlock","volume", "setvolume",  "volumeup", "volumeDown", "exit", "play", "stop",
-        "uploadSongs", "sortSongs","showSongs"};
+        { "lock", "unlock","volume", "setvolume",  "volumeup", "volumeDown", "exit",
+        "uploadSongs", "sortSongs","showSongs", "play","playNext","playPrevious", "stop"};
         
         
         public static void Command()
@@ -20,7 +20,7 @@ namespace AudioPlayer
             defaults.Volume = 50;
             Texter("Player Command 1.0.0.0\nFor more information tap <help> below...");
             foreach (string s in keys)
-                Texter($"\n :: <{s}> ::\n");
+                Texter($" :: <{s}> ::\n");
             Management(defaults, songWorker);
         }
         private static void Management(PlayerProperties properties, SongWorker worker)

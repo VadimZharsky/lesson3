@@ -10,31 +10,6 @@ namespace AudioPlayer
     {
         static void Main(string[] args)
         {
-            
-
-
-            /*Texter("==================");
-
-            Song songlist = new Song(songNames);
-            songlist.SelectedList(songNames);
-            Texter("==================");
-            Song artistlist = new Song(artist);
-            songlist.SelectedList(artist);
-            Texter("==================");
-            Song genrelist = new Song(genre);
-            songlist.SelectedList(genre);
-            Texter("==================");
-            Song durationlist = new Song(duration);
-            songlist.forDuration(duration);
-            FullDuration(duration);
-            PlayerProperties volume = new PlayerProperties();
-            volume.Volume = 12;
-            for (int i = 0; i < 15; i++)
-            {
-                volume.VolumeDown();
-                Texter($"now volume is: {volume.Volume.ToString()}");
-            }
-            */
             PlayerCommand.Command();
             Console.ReadKey();
         }

@@ -63,7 +63,10 @@ namespace AudioPlayer
         public bool Stop()
         {
             Texter("Playmode is interrupted");
+            SongWorker stopped = new SongWorker();
+            stopped.Stop(false);
             return isPlaying = false;
+
         }
 
         private static void Texter(string str)
