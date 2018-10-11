@@ -53,8 +53,7 @@ namespace AudioPlayer
             {
                 Texter("Playmode is activated");
                 return isPlaying = false;
-            }
-            
+            }    
         }
         public bool IsPlaying()
         {
@@ -63,12 +62,9 @@ namespace AudioPlayer
         public bool Stop()
         {
             Texter("Playmode is interrupted");
-            SongWorker stopped = new SongWorker();
-            stopped.Stop(false);
             return isPlaying = false;
 
         }
-
         private static void Texter(string str)
         {
             Console.WriteLine(str);

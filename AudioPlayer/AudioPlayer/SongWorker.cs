@@ -22,19 +22,11 @@ namespace AudioPlayer
         public int NumSong
         {
             get
-            {
-                return numSong;
-            }
+            {return numSong;}
             set
             {
-                if (value >= songNames.Count - 1)
-                {
-                    numSong = songNames.Count - 1;
-                }
-                else if (value < 0)
-                {
-                    numSong = 0;
-                }
+                if (value >= songNames.Count - 1){ numSong = songNames.Count - 1;}
+                else if (value < 0) {numSong = 0;}
                 else { numSong = value; }
             }
         }
@@ -57,150 +49,88 @@ namespace AudioPlayer
                 genre.Add(songs[i].genre);
                 duration.Add(songs[i].duration);
             }
+            songsToPlay = Playlist.SongsToPlay(songs);
         }
         public string ToPlay()
         {
-            
-            songsToPlay = Playlist.SongsToPlay(songs);
-            
             if (songsToPlay.Count > 0)
             {
-                Console.WriteLine($"Playing songs {songsToPlay[numSong].songName}");
                 playOrNot = true;
-                return songsToPlay[numSong].songName;    
+                return $"Playing song: {songsToPlay[numSong].songName} {{{numSong}}}";    
             }
-            else
-            {
-                Console.WriteLine($"there is no any song. please before upload songs");
-                return "";
-            }
+            else { return "there is no any song.please before upload songs"; }
             
         }
-        public  void Stop(bool finished)
+        public  void Stop()
         {
-            playOrNot = finished;
+            playOrNot = false;
         }
         public string PlayNext()
         {
-            if (numSong + 1 < songs.Count && playOrNot == true)
-            {
-                numSong++;
-                Console.WriteLine($"Playing songs {songsToPlay[numSong].songName}");
-                return songsToPlay[numSong].songName;
-            }
-            else { return ""; }
-            
-
+            if (numSong + 1 < songs.Count && playOrNot == true) { numSong++; }
+            return $"Playing song: {songsToPlay[numSong].songName} {{{numSong}}}";
         }
         public string PlayPrevious()
         {
-            if (numSong - 1 >= 0 && playOrNot == true)
-            {
-                numSong--;
-                Console.WriteLine($"Playing songs {songsToPlay[numSong].songName}");
-                return songsToPlay[numSong].songName;
-            }
-            else { return ""; }
-            
+            if (numSong - 1 >= 0 && playOrNot == true) { numSong--; }
+            return $"Playing song: {songsToPlay[numSong].songName} {{{numSong}}}";
         }
         public void ShowSongs()
         {
-            Console.WriteLine("show :\n1.Songs\n2.Artists\n3.years\n4.genres");
+            Console.WriteLine("show :\n1.Songs\n2.Artists\n3.years\n4.genres\n5.Duration");
             byte choise = Convert.ToByte(Console.ReadLine());
             switch (choise)
             {
                 case 1:
-                    foreach (Song song in songs)
-                        Console.WriteLine(song.songName); ;
+                    foreach (Song song in songsToPlay)
+                        Console.WriteLine(song.songName); 
                     break;
                 case 2:
-                    foreach (Song song in songs)
-                        Console.WriteLine(song.artist); ;
+                    foreach (Song song in songsToPlay)
+                        Console.WriteLine(song.artist); 
                     break;
                 case 3:
-                    foreach (Song song in songs)
-                        Console.WriteLine(song.year); ;
+                    foreach (Song song in songsToPlay)
+                        Console.WriteLine(song.year); 
                     break;
                 case 4:
-                    foreach (Song song in songs)
-                        Console.WriteLine(song.genre); ;
+                    foreach (Song song in songsToPlay)
+                        Console.WriteLine(song.genre);
+                    break;
+                case 5:
+                    foreach (Song song in songsToPlay)
+                        Console.WriteLine(song.duration);
                     break;
             }
         }
         public void SortSongs()
         {
-            Console.WriteLine("sort by :\n1.Song\n2.Artist\n3.year\n4.genre");
+            
+            Console.WriteLine("sort by :\n1.Song\n2.Artist\n3.year\n4.genre\n5.Duration");
             byte choise = Convert.ToByte(Console.ReadLine());
             switch (choise)
             {
                 case 1:
-                    Sorting(songNames);
+                    songsToPlay = Playlist.SongsToPlay(songsToPlay, 1);
                     break;
                 case 2:
-                    Sorting(artist);
+                    songsToPlay = Playlist.SongsToPlay(songsToPlay, 2);
                     break;
                 case 3:
-                    Sorting(year);
+                    songsToPlay = Playlist.SongsToPlay(songsToPlay, 3);
                     break;
                 case 4:
-                    Sorting(genre);
+                    songsToPlay = Playlist.SongsToPlay(songsToPlay, 4);
+                    break;
+                case 5:
+                    songsToPlay = Playlist.SongsToPlay(songsToPlay, 5);
                     break;
             }
         }
-        public void Sorting(List<string> forSort)
+
+        internal void ShuffleSongs()
         {
-            sorted = forSort;
-            for (int i = sorted.Capacity - 1; i >= 0; i--)
-            {
-                for (int j = 0; j < sorted.Capacity - 1; j++)
-                {
-                    string temp = sorted[j].ToLower();
-                    string temp2 = sorted[j + 1].ToLower();
-                    string forInsertFirst = EachCharSort(temp, temp2);
-                    string forInsertSecond = (forInsertFirst == temp) ? temp2 : temp;
-
-                    sorted.Remove(sorted[j]);
-                    sorted.Remove(sorted[j]);
-                    sorted.Insert(j, forInsertSecond);
-                    sorted.Insert(j, forInsertFirst);
-                }
-            }
-            foreach (string s in sorted)
-                Console.WriteLine("::::::::::::" + s + ":::::::::::::::");
-
+            songsToPlay = Playlist.ShuffleList(songsToPlay);
         }
-        private string EachCharSort(string one, string two)
-        {
-            int counter = 0;
-            byte index, index2;
-            int lengthOne = one.Length;
-            int lengthTwo = two.Length;
-            int maximum = (lengthOne < lengthTwo) ? lengthOne : lengthTwo;
-            index = (byte)one[counter];
-            index2 = (byte)two[counter];
-            if (index < index2) { return one; }
-            else if (index == index2)
-            {
-                return deepSort(one, two, counter, maximum);
-            }
-            else { return two; }
-        }
-
-        private string deepSort(string one, string two, int counter, int maximum)
-        {
-            counter++;
-            byte index, index2;
-            index = (byte)one[counter];
-            index2 = (byte)two[counter];
-            bool match = (index == index2) ? true : false;
-            if (match == true && counter < maximum - 1) { return deepSort(one, two, counter, maximum); }
-            else
-            {
-                if (index < index2) { return one; }
-                else { return two; }
-            }
-        }
-
-
     }
 }

@@ -8,9 +8,53 @@ namespace AudioPlayer
 {
     class Playlist
     {
-        internal static List<Song> SongsToPlay(List<Song> songs)
+        public static List<Song> SongsToPlay(List<Song> songs)
         {
             return songs;
+        }
+
+        public static List<Song> SongsToPlay(List<Song> songsToPlay, int choise)
+        {
+            switch (choise)
+            {
+                case 1:
+                    songsToPlay = songsToPlay.OrderBy(obj=>obj.songName).ToList();
+                    break;
+                case 2:
+                    songsToPlay = songsToPlay.OrderBy(obj => obj.artist).ToList();
+                    break;
+                case 3:
+                    songsToPlay = songsToPlay.OrderBy(obj => obj.year).ToList();
+                    break;
+                case 4:
+                    songsToPlay = songsToPlay.OrderBy(obj => obj.genre).ToList();
+                    break;
+                case 5:
+                    songsToPlay = songsToPlay.OrderBy(obj => obj.duration).ToList();
+                    break;
+            }
+            return songsToPlay;
+        }
+
+        internal static List<Song> ShuffleList(List<Song> songsToPlay)
+        {
+            List<Song> tempList = new List<Song>();
+            Random rnd = new Random();
+            string s = "";
+            string str = "";
+            for (int i = 0; i < songsToPlay.Count; i++)
+                s += i;
+            while (str.Length < s.Length)
+            {
+                string x = rnd.Next(0, s.Length).ToString();
+                if (!str.Contains(x))
+                {
+                    str += x;
+                    tempList.Add(songsToPlay[Convert.ToInt32(x)]);
+                }
+
+            }
+            return tempList;
         }
     }
 }

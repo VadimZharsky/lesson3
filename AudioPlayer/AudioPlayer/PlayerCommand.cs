@@ -10,7 +10,7 @@ namespace AudioPlayer
     {
         public static List<string> keys = new List<string>(4)
         { "lock", "unlock","volume", "setvolume",  "volumeup", "volumeDown", "exit",
-        "uploadSongs", "sortSongs","showSongs", "play","playNext","playPrevious", "stop"};
+        "uploadSongs", "sortSongs","shuffle","showSongs", "play","playNext","playPrevious", "stop"};
         
         
         public static void Command()
@@ -64,6 +64,7 @@ namespace AudioPlayer
                 case "stop":
                     {
                         properties.Stop();
+                        worker.Stop();
                         break;
                     }
                 case "volume":
@@ -109,6 +110,11 @@ namespace AudioPlayer
                 case "sortSongs":
                     {
                         worker.SortSongs();
+                        break;
+                    }
+                case "shuffle":
+                    {
+                        worker.ShuffleSongs();
                         break;
                     }
                 case "showSongs":
