@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F1CDCA1-46FC-4D58-BFDD-2B73A8370989}</ProjectGuid>
+    <ProjectGuid>{86A76390-A230-437F-97FB-3CE77EE4EDC1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>lesson7_task1_</RootNamespace>
-    <AssemblyName>lesson7%28task1%29</AssemblyName>
+    <RootNamespace>lesson7_HomeWork_</RootNamespace>
+    <AssemblyName>lesson7%28HomeWork%29</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Neighbour.cs" />
+    <Compile Include="NeighbourCreator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Song.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
