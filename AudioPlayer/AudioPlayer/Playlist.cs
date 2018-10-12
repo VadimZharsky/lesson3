@@ -36,7 +36,7 @@ namespace AudioPlayer
             return songsToPlay;
         }
 
-        internal static List<Song> ShuffleList(List<Song> songsToPlay)
+        public static List<Song> ShuffleList(List<Song> songsToPlay)
         {
             List<Song> tempList = new List<Song>();
             Random rnd = new Random();
@@ -55,6 +55,46 @@ namespace AudioPlayer
 
             }
             return tempList;
+        }
+        public static List<Song> sortBySongList(List<Song> songsToPlay, string searchParam, string searchWord)
+        {
+            List<Song> selectedList = new List<Song>();
+            switch (searchParam)
+            {
+                case "songName":
+                    foreach (Song song in songsToPlay)
+                    {
+                        if (song.songName == searchWord)
+                            selectedList.Add(song);
+                    }
+                    break;
+                case "artist":
+                    foreach (Song song in songsToPlay)
+                    {
+                        if (song.artist == searchWord)
+                            selectedList.Add(song);
+                    }
+                    break;
+                case "year":
+                    foreach (Song song in songsToPlay)
+                    {
+                        if (song.year == searchWord)
+                            selectedList.Add(song);
+                    }
+                    break;
+                case "genre":
+                    foreach (Song song in songsToPlay)
+                    {
+                        if (song.genre == searchWord)
+                            selectedList.Add(song);
+                    }
+                    break;
+            }
+            Console.WriteLine($"Found nexts songs \"{searchWord}\" in {searchParam}:");
+            foreach (Song song in selectedList)
+                Console.WriteLine($"   {song.songName}");
+
+            return selectedList;
         }
     }
 }

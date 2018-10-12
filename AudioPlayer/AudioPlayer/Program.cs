@@ -13,10 +13,6 @@ namespace AudioPlayer
             PlayerCommand.Command();
             Console.ReadKey();
         }
-        public static void Texter(string s)
-        {
-            Console.WriteLine(s);
-        }
         public static double FullDuration(List<double> duration)
         {
             double full = 0;
@@ -28,7 +24,7 @@ namespace AudioPlayer
                 temp *= 60;
                 double inSec = temp + remainder;
                 full += inSec;
-                Texter($"start: {d},, inSec: {inSec}");
+                Console.WriteLine($"start: {d},, inSec: {inSec}");
             }
             
             return 0;
