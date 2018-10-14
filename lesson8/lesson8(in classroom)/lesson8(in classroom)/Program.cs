@@ -11,58 +11,73 @@ namespace lesson8_in_classroom_
         static void Main(string[] args)
         {
             
-            var v = new massive(new char [4,4]
+            var v = new massive('v', new char [4,4]
                 {
-                    { '|', '-', '\\', ' '},
-                    { '|', ' ', '/', ' '},
-                    { '|', ' ', '\\', ' '},
-                    { '|', ' ', '/', ' '},
+                    { '|', '|', ' ', ' '},
+                    { '|', '|', ' ', ' '},
+                    { '|', '|', ' ', ' '},
+                    { '\\', '/', ' ', ' '},
                 });
-            var a = new massive(new char[4, 4]
+            var a = new massive('a', new char[4, 4]
                 {
                     { '/', '-', '\\', ' '},
                     { '|', ' ', '|', ' '},
                     { '|', '-', '|', ' '},
                     { '|', ' ', '|', ' '},
                 });
-            var d = new massive(new char[4, 4]
+            var d = new massive('d', new char[4, 4]
                 {
                     { '|', '-', '\\', ' '},
                     { '|', ' ', '|', ' '},
                     { '|', ' ', '|', ' '},
                     { '|', '-', '/', ' '},
                 });
-            var i = new massive(new char[4, 4]
+            var i = new massive('i', new char[4, 4]
                 {
                     { '-', '|', '-', ' '},
                     { ' ', '|', ' ', ' '},
                     { ' ', '|', ' ', ' '},
                     { '-', '|', '-', ' '},
                 });
-            var m = new massive(new char[4, 4]
+            var m = new massive('m', new char[4, 4]
                 {
                     { '|', '-', '\\', ' '},
                     { '|', '|', '|', ' '},
                     { '|', '|', '|', ' '},
                     { '|', '|', '|', ' '},
                 });
-            for (int j = 0; j < 4; j++)
-            {
-                for (int k = 0; k < 4; k++)
+            massive[] alfabet = new massive[]
                 {
-                    Console.Write(i.arr[j, k]+" ");
-                }
-                Console.WriteLine("");
-            }
-            
+                    v,a,d,i,m
+                };
+            writeLetters(alfabet);
             Console.ReadKey();
+        }
+        public static void writeLetters(massive[] name)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                foreach (var ch in name)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        Console.Write(ch.arr[i, j]);
+                    }
+
+                    Console.Write("  ");
+                }
+
+                Console.WriteLine();
+            }
         }
     }
     public struct massive
     {
         public char[,] arr;
-        public massive(char[,] arr)
+        public char letterName;
+        public massive(char letterName, char[,] arr)
         {
+            this.letterName = letterName;
             this.arr = arr;
         }
     }
