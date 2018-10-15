@@ -26,6 +26,7 @@ namespace AudioPlayer
             }
         }
 
+
         public void VolumeUp()
         {
             Volume++;

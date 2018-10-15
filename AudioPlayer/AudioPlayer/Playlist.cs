@@ -27,7 +27,7 @@ namespace AudioPlayer
                     songsToPlay = songsToPlay.OrderBy(obj => obj.year).ToList();
                     break;
                 case 4:
-                    songsToPlay = songsToPlay.OrderBy(obj => obj.genre).ToList();
+                    songsToPlay = songsToPlay.OrderBy(obj => obj.Genre).ToList();
                     break;
                 case 5:
                     songsToPlay = songsToPlay.OrderBy(obj => obj.duration).ToList();
@@ -85,7 +85,7 @@ namespace AudioPlayer
                 case "genre":
                     foreach (Song song in songsToPlay)
                     {
-                        if (song.genre == searchWord)
+                        if (song.Genre == searchWord)
                             selectedList.Add(song);
                     }
                     break;
