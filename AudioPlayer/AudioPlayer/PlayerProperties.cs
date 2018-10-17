@@ -11,7 +11,7 @@ namespace AudioPlayer
         private double volume;
         private bool isLocked = false;
         private bool isPlaying = false;
-
+        
         public double Volume
         {
             get { return volume; }

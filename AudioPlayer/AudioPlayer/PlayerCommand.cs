@@ -56,7 +56,7 @@ namespace AudioPlayer
                         properties.Play();
                         if (properties.IsPlaying() == true)
                         {
-                            Texter(worker.ToPlay());
+                            worker.ToPlay();
                         }
                         else { Texter("impossible action. Player was locked"); }
                         break;
@@ -130,12 +130,12 @@ namespace AudioPlayer
                     }
                 case "playNext":
                     {
-                        Texter(worker.PlayNext());
+                        worker.PlayNext();
                         break;
                     }
                 case "playPrevious":
                     {
-                        Texter(worker.PlayPrevious());
+                        worker.PlayPrevious();
                         break;
                     }
                 default:

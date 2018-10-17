@@ -9,6 +9,7 @@ namespace AudioPlayer
     class SongWorker
     {
         List<Song> songs = new List<Song>();
+        
         List<Song> songsToPlay = new List<Song>();
 
         private bool playOrNot = false;
@@ -27,48 +28,47 @@ namespace AudioPlayer
         }
         public void UploadSongs()
         {
-            songs.Add(new Song() { songName = "aux absents", artist = "FonkyFamily", year = "1998", duration = 140, Genre = "hiphop" });
-            songs.Add(new Song() { songName = "In the name of Amun", artist = "Nile", year = "2007", duration = 251, Genre = "metal" });
-            songs.Add(new Song() { songName = "drowning", artist = "Sixth June", year = "2014", duration = 187, Genre = "wave" });
-            songs.Add(new Song() { songName = "Younger Dryas", artist = "Linea Aspera", year = "2005", duration = 134, Genre = "wave" });
-            songs.Add(new Song() { songName = "Anybody", artist = "Currensy", year = "2000", duration = 274, Genre = "hiphop" });
-            songs.Add(new Song() { songName = "Solitude depth", artist = "Sterbend", year = "1990", duration = 225, Genre = "metal" });
-            songs.Add(new Song() { songName = "Im Wasser", artist = "Schwefelgelb", year = "2016", duration = 533, Genre = "ebm" });
-            songs.Add(new Song() { songName = "Orchidea", artist = "Kauan", year = "2010", duration = 421, Genre = "metal" });
-            songsToPlay = Playlist.SongsToPlay(songs);
+            
+            songs.Add(new Song() { songName = "aux absents", artist = "FonkyFamily", year = "1998", duration = 140, Genre = 0 });
+            songs.Add(new Song() { songName = "In the name of Amun",artist = "Nile", year = "2007", duration = 251, Genre = Song.genres.metal });
+            songs.Add(new Song() { songName = "drowning", artist = "Sixth June", year = "2014", duration = 187, Genre = Song.genres.Minimalsynth|Song.genres.wave });
+            songs.Add(new Song() { songName = "Younger Dryas", artist = "Linea Aspera", year = "2005", duration = 134, Genre = Song.genres.Minimalsynth | Song.genres.wave });
+            songs.Add(new Song() { songName = "Anybody", artist = "Currensy", year = "2000", duration = 274, Genre = Song.genres.hiphop });
+            songs.Add(new Song() { songName = "Solitude depth", artist = "Sterbend", year = "1990", duration = 225, Genre = Song.genres.metal });
+            songs.Add(new Song() { songName = "Im Wasser", artist = "Schwefelgelb", year = "2016", duration = 533, Genre = Song.genres.ebm|Song.genres.Minimalsynth });
+            songs.Add(new Song() { songName = "Orchidea", artist = "Kauan", year = "2010", duration = 421, Genre = Song.genres.rock|Song.genres.ambient });
+            songsToPlay = songs.SongsToPlay();
         }
-        public string ToPlay()
+        public void ToPlay()
         {
             if (songsToPlay.Count > 0)
             {
+
                 playOrNot = true;
-                Console.WriteLine(GetSongData(songsToPlay[numSong]));
-                return "";
+                Console.WriteLine(GetSongData(songsToPlay[numSong]));   
             }
-            else { return "there is no any song.please before upload songs"; }
+            else { NoSongs(); }
 
         }
         Tuple<string, int, int, string, string, string> GetSongData(Song songsToPlay)
         {
             int inminutes = (int)songsToPlay.duration / 60;
             int inseconds = (int)songsToPlay.duration % 60;
-            return new Tuple<string, int, int, string, string, string>(songsToPlay.songName, inminutes, inseconds, songsToPlay.artist, songsToPlay.year, songsToPlay.Genre);
+            return new Tuple<string, int, int, string, string, string>(songsToPlay.songName, inminutes, inseconds, songsToPlay.artist, songsToPlay.year, songsToPlay.Genre.ToString());
         }
         public  void Stop()
         {
             playOrNot = false;
         }
-        public string PlayNext()
+        public void PlayNext()
         {
             if (numSong + 1 < songsToPlay.Count && playOrNot == true) { numSong++; }
             if (playOrNot) { ToPlay(); }
-            return "";
         }
-        public string PlayPrevious()
+        public void PlayPrevious()
         {
             if (numSong - 1 >= 0 && playOrNot == true) { numSong--; }
             if (playOrNot) { ToPlay(); }
-            return "";
         }
         public void ShowSongs()
         {
@@ -101,7 +101,7 @@ namespace AudioPlayer
                 }
             
             }
-            else { Console.WriteLine("there is no any song.please before upload songs"); }
+            else { NoSongs(); }
         }
         public void SortSongs()
         {
@@ -112,23 +112,23 @@ namespace AudioPlayer
                 switch (choise)
                 {
                     case 1:
-                        songsToPlay = Playlist.SongsToPlay(songsToPlay, 1);
+                        songsToPlay = songsToPlay.SongsToPlay(1);
                         break;
                     case 2:
-                        songsToPlay = Playlist.SongsToPlay(songsToPlay, 2);
+                        songsToPlay = songsToPlay.SongsToPlay(2);
                         break;
                     case 3:
-                        songsToPlay = Playlist.SongsToPlay(songsToPlay, 3);
+                        songsToPlay = songsToPlay.SongsToPlay(3);
                         break;
                     case 4:
-                        songsToPlay = Playlist.SongsToPlay(songsToPlay, 4);
+                        songsToPlay = songsToPlay.SongsToPlay(4);
                         break;
                     case 5:
-                        songsToPlay = Playlist.SongsToPlay(songsToPlay, 5);
+                        songsToPlay = songsToPlay.SongsToPlay(5);
                         break;
                 }
             }
-            else { Console.WriteLine("there is no any song.please before upload songs"); }
+            else { NoSongs(); }
 
         }
 
@@ -156,17 +156,19 @@ namespace AudioPlayer
                 }
                 Console.WriteLine($"Insert searching {searchParam} to make a playlist");
                 string searchWord = Convert.ToString(Console.ReadLine());
-                songsToPlay = Playlist.sortBySongList(songs, searchParam, searchWord);
+                songsToPlay = songsToPlay.sortBySongList(searchParam, searchWord);
             }
-            else { Console.WriteLine("there is no any song.please before upload songs"); }
+            else { NoSongs(); }
 
         }
 
         public void ShuffleSongs()
         {
             if (songsToPlay.Count > 0)
-                songsToPlay = Playlist.ShuffleList(songsToPlay);
-            else { Console.WriteLine("there is no any song.please before upload songs"); }
+                songsToPlay = songsToPlay.ShuffleList();
+            else { NoSongs(); }
         }
+        private void NoSongs()
+        { Console.WriteLine("there is no any song.please before upload songs"); }
     }
 }
