@@ -10,22 +10,6 @@ namespace AudioPlayer
     {
         public static List<Song> SongsToPlay(this List<Song> songs)
         {
-            List<Artist> artists = new List<Artist>();
-            List<Artist> albumPerArtist = new List<Artist>();
-            List<Album> albums = new List<Album>();
-            foreach (Song song in songs)
-            {
-                foreach (Artist artist in artists)
-                {
-                    if(song.artist!=artist.ArtistName)
-                        artists.Add(new Artist() { ArtistName = song.artist });
-                }
-                foreach (Album album in albums)
-                {
-                    if (song.album != album.AlbumName)
-                        albums.Add(new Album() { AlbumName = song.album });
-                }
-            }
             return songs;
         }
 
@@ -87,7 +71,7 @@ namespace AudioPlayer
                 case "artist":
                     foreach (Song song in songsToPlay)
                     {
-                        if (song.artist == searchWord)
+                        if (song.artist.ArtistName == searchWord)
                             selectedList.Add(song);
                     }
                     break;
@@ -101,7 +85,7 @@ namespace AudioPlayer
                 case "genre":
                     foreach (Song song in songsToPlay)
                     {
-                        if (song.Genre.ToString() == searchWord)
+                        if (song.Genre.ToString().Contains(searchWord))
                             selectedList.Add(song);
                     }
                     break;

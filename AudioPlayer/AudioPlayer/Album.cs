@@ -13,7 +13,7 @@ namespace AudioPlayer
         {
             get
             {
-                if (albumName.Length == 0) { return "Unknown album"; }
+                if (albumName == null) { return "Unknown album"; }
                 else { return albumName; }
             }
             set { albumName = value; }

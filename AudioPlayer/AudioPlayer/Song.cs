@@ -24,14 +24,13 @@ namespace AudioPlayer
             notDefined = 2048
         }
         public string songName { get; set; }
-        public string artist { get; set; }
+        public Artist artist { get; set; }
         public string year { get; set; }
-        public string album { get; set; }
+        public Album album { get; set; }
         public string lyrics{ get; set; }
         private genres genre;
         public double duration { get; set; }
-        
-
+        public bool like { get; set; }
 
         public genres Genre
         {

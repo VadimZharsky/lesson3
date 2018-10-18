@@ -9,8 +9,8 @@ namespace AudioPlayer
      class PlayerCommand
     {
         public static List<string> keys = new List<string>(4)
-        { "lock", "unlock","volume", "setvolume",  "volumeup", "volumeDown", "exit",
-        "uploadSongs", "sortSongs","shuffle","sortBy","showSongs", "play","playNext","playPrevious", "stop"};
+        { "lock", "unlock","volume", "setvolume",  "volumeup", "volumeDown","uploadSongs", "sortSongs",
+            "shuffle","sortBy","showSongs", "play","playNext","playPrevious","clear", "stop", "exit"};
         
         
         public static void Command()
@@ -18,14 +18,14 @@ namespace AudioPlayer
             PlayerProperties defaults = new PlayerProperties();
             SongWorker songWorker = new SongWorker();
             defaults.Volume = 50;
-            Texter("Player Command 1.0.0.0\nFor more information tap <help> below...");
+            Texter("Player Command 1.0.0.0\nFor more information tap <help> below...\n");
             foreach (string s in keys)
                 Texter($" :: <{s}> ::\n");
             Management(defaults, songWorker);
         }
         private static void Management(PlayerProperties properties, SongWorker worker)
         {
-            
+            Console.BackgroundColor = ConsoleColor.Black;
             Texter("\nplayerCommand/keys/");
             string cmd = Convert.ToString(Console.ReadLine());
             Switcher(cmd, properties, worker);
@@ -72,7 +72,7 @@ namespace AudioPlayer
                         Texter($"now volume is  {properties.Volume}");
                         break;
                     }
-                case "setvolume":
+                case "setVolume":
                     {
                         string temp = SetVolume(properties);
                         if (temp == "1") { Texter("incorrect input data"); }
@@ -82,16 +82,21 @@ namespace AudioPlayer
                         } 
                         break;
                     }
-                case "volumeup":
+                case "volumeUp":
                     {
                         properties.VolumeUp();
                         Texter($"now volume is  {properties.Volume}");
                         break;
                     }
-                case "volumedown":
+                case "volumeDown":
                     {
                         properties.VolumeDown();
                         Texter($"now volume is  {properties.Volume}");
+                        break;
+                    }
+                case "help":
+                    {
+                        helper();
                         break;
                     }
                 case "exit":
@@ -138,11 +143,17 @@ namespace AudioPlayer
                         worker.PlayPrevious();
                         break;
                     }
+                case "clear":
+                    {
+                        worker.Clear();
+                        break;
+                    }
                 default:
                     Texter("not authorized command");
                     break;                    
             }
         }
+
         private static string SetVolume(PlayerProperties properties)
         {
             Texter("set new volume level: ");
@@ -158,6 +169,26 @@ namespace AudioPlayer
         private static void Texter(string text)
         {
             Console.Write(text);
+        }
+        private static void helper()
+        {
+            Texter("lock - установка блокировки плеера\n");
+            Texter("unlock - снятие блокировки плеера\n");
+            Texter("volume - текущий уровень громкости\n");
+            Texter("setVolume - установить новое значение громкости\n");
+            Texter("volumeUp - повысить уровень громкости на 1\n");
+            Texter("volumeDown - понизить уровень громкости на 1\n");
+            Texter("uploadSongs - загрузить песни\n");
+            Texter("sortSongs - обычная сортировка\n");
+            Texter("shuffle - произвольный плейлист\n");
+            Texter("sortBy - искать по критерию\n");
+            Texter("showSongs - вывести актуальный плейлист\n");
+            Texter("play - воспроизведение\n");
+            Texter("playNext - играть следующую\n");
+            Texter("playPrevious - играть предыдущую\n");
+            Texter("clear - удалить текущий плейлист\n");
+            Texter("stop - стоп\n");
+            Texter("exit - выйти из программы\n");
         }
     }
 }

@@ -9,15 +9,22 @@ namespace AudioPlayer
     class Artist
     {
         private string artistName;
-
+        public List<string> artists = new List<string>();
         public string ArtistName
         {
             get
             {
-                if (artistName.Length == 0) { return "Unknown artist"; }
+                if (artistName == null) { return "Unknown artist"; }
                 else { return artistName; }
             }
-            set { artistName = value; }
+            set
+            {
+                artistName = value;
+                if (artists.Contains(artistName))
+                {
+                    artists.Add(artistName);
+                }
+            }
         }
     }
 }
