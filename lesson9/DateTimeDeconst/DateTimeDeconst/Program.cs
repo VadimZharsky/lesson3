@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-
 namespace DateTimeDeconst
 {
     class Program
@@ -27,13 +25,9 @@ namespace DateTimeDeconst
             }
             Console.ReadKey();
         }
-
     }
-
-
     public static class DeconstructDateTime
     {
-
         public static void Deconstruct(this DateTime today,out int year, out int day, out int hour, out int min, out int sec)
         {
             year = today.Year; 

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CoordinateSystem
 {
+
     static class Program
+
     {
         static void Main(string[] args)
         {
@@ -19,6 +21,7 @@ namespace CoordinateSystem
 
         static double VectorLength(threeDimentions[] vector)
         {
+
             var (x1, y1, z1) = vector[0];
             var (x2, y2, z2) = vector[1];
             double diffX = x2 - x1;
@@ -31,6 +34,7 @@ namespace CoordinateSystem
         private static double Pow(this double pow)
         {
              return Math.Pow(pow, 2);
+
         }
     }
     struct threeDimentions
@@ -42,11 +46,13 @@ namespace CoordinateSystem
             this.y = y;
             this.z = z;
         }
+
         public void Deconstruct(out double X, out double Y, out double Z)
         {
             X = x;
             Y = y;
             Z = z;
         }
+
     }
 }
