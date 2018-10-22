@@ -29,9 +29,13 @@ namespace MarketOnline
             }
         }
 
-        public List<Item> GetItems()
+        public void GetItems()
         {
-            return this.items;
+            foreach (Item item in items)
+            {
+                Console.Write(item.SeeItems());
+                Console.Write("******");
+            }
         }
     }
 }

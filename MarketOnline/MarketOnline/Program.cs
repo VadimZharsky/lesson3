@@ -12,9 +12,8 @@ namespace MarketOnline
         {
 
             var sell = new Seller();
-            var cust = new Customer();
             sell.SellerWork();
-            cust.ShoppingTable();
+            sell.GetItems();
             Console.ReadKey();  
         }
        
