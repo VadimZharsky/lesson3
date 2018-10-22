@@ -8,11 +8,11 @@ namespace MarketOnline
 {
     class Item
     {
-        
+
         private string name;
         private int price;
         private string id;
-        
+
 
         public string Name
         {
@@ -21,7 +21,7 @@ namespace MarketOnline
         }
         public int Price
         {
-            get { return price; } 
+            get { return price; }
         }
         public string Id
         {
@@ -34,6 +34,22 @@ namespace MarketOnline
             this.price = price;
         }
         public virtual string SeeItems() { return ""; }
+        public static bool operator ==(Item item, Item item2)
+        {
+            return item.Price == item2.Price;
+        }
+        public static bool operator !=(Item item, Item item2)
+        {
+            return item.Price != item2.Price;
+        }
+        public static bool operator <(Item item, Item item2)
+        {
+            return item.Price < item2.Price;
+        }
+        public static bool operator >(Item item, Item item2)
+        {
+            return item.Price > item2.Price;
+        }
     }
     class Smartphone : Item
     {
@@ -70,7 +86,7 @@ namespace MarketOnline
         }
         public override string SeeItems()
         {
-            return $"Name: {Name}\nModel: {Model}\nScreenSize: {ScreenSize}\nProseccor: {CpuMod}\nGraphics: {GpuMod}\nYear: {EditionYear}\nPrice{Price}$\n";
+            return $"Name: {Name}\nModel: {Model}\nScreenSize: {ScreenSize}\nProcessor: {CpuMod}\nGraphics: {GpuMod}\nYear: {EditionYear}\nPrice{Price}$\n";
         }
     }
     class VacuumCleaner : Item
@@ -98,5 +114,7 @@ namespace MarketOnline
         {
             return $"Name: {Name}\nModel: {Model}\nPower: {Power}\nNoize Level: {NoizeLevel}\nPrice{Price}$\n";
         }
+        
     }
+    
 }

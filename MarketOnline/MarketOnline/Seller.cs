@@ -25,17 +25,13 @@ namespace MarketOnline
             foreach (Item item in items)
             {
                 Console.Write(item.SeeItems());
-                Console.Write("---------");
+                Console.WriteLine("---------");
             }
+            Console.WriteLine(items[0] < items[2]);
+            Console.WriteLine(items[0] > items[2]);
+            Console.WriteLine(items[0] == items[2]);
+            Console.WriteLine(items[0] != items[2]);
         }
 
-        public void GetItems()
-        {
-            foreach (Item item in items)
-            {
-                Console.Write(item.SeeItems());
-                Console.Write("******");
-            }
-        }
     }
 }
