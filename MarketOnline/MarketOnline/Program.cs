@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MarketOnline.SellerWork;
 
 namespace MarketOnline
 {
@@ -10,7 +7,7 @@ namespace MarketOnline
     {
         static void Main(string[] args)
         {
-
+            
             var sell = new Seller();
             sell.SellerWork();;
             Console.ReadKey();  
