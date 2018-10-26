@@ -1,38 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace MarketOnline
 {
     class Item
     {
 
-        private string name;
+        public string name { get; set; }
         private int price;
-        private string id;
+        public string id { get; set; }
 
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
         public int Price
         {
             get { return price; }
-        }
-        public string Id
-        {
-            get { return id; }
-            set { id = value; }
+            set { price = value; }
         }
 
-        public void SetPrice(int price)
-        {
-            this.price = price;
-        }
         public virtual string SeeItems() { return ""; }
         public static bool operator ==(Item item, Item item2)
         {
@@ -86,7 +68,7 @@ namespace MarketOnline
         }
         public override string SeeItems()
         {
-            return $"Name: {Name}\nModel: {Model}\nScreenSize: {ScreenSize}\nProcessor: {CpuMod}\nGraphics: {GpuMod}\nYear: {EditionYear}\nPrice{Price}$\n";
+            return $"Name: {name}\nModel: {Model}\nScreenSize: {ScreenSize}\nProcessor: {CpuMod}\nGraphics: {GpuMod}\nYear: {EditionYear}\nPrice{Price}$\n";
         }
     }
     class VacuumCleaner : Item
@@ -112,7 +94,7 @@ namespace MarketOnline
         }
         public override string SeeItems()
         {
-            return $"Name: {Name}\nModel: {Model}\nPower: {Power}\nNoize Level: {NoizeLevel}\nPrice{Price}$\n";
+            return $"Name: {name}\nModel: {Model}\nPower: {Power}\nNoize Level: {NoizeLevel}\nPrice{Price}$\n";
         }
         
     }
