@@ -8,30 +8,28 @@ using System.IO;
 
 namespace Printer
 {
-    abstract class Printer
-    {
-       public abstract void Print();
-    }
-    class ToConsole : Printer
+    
+    class ToConsole : IPrinter
     {
        public string text { get; set; }
-       public override void Print()
+       public  void Print()
         {
             Console.WriteLine(text);
         }
+
     }
-    class ToFile : Printer
+    class ToFile : IPrinter
     {
         public string text { get; set; }
-        public override void Print()
+        public void Print()
         {
             File.WriteAllText("Printed Text.txt", text); 
         }
     }
-    class ToImage : Printer
+    class ToImage : IPrinter
     {
         public string text { get; set; }
-        public override void Print()
+        public void Print()
         {
             Bitmap bitmap = new Bitmap(400, 400);
             FileStream stream = new FileStream("TestImage.jpg", FileMode.Create, FileAccess.ReadWrite);
