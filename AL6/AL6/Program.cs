@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
+
 namespace AL6
 {
     class Program
     {
         public delegate void serializ<T>(T item);
+
 
         static void Main(string[] args)
         {
@@ -18,6 +20,7 @@ namespace AL6
             //FileInfo firstFile = GetFileInfo(dir);
             //Directory.CreateDirectory(addedDir);
             //CopyFirstFile(addedDir,firstFile);
+
             //Chatt.Chatting();
             serializ<Song> del = ConsoleSrlz;
             del += FileSrlz;
