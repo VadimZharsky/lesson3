@@ -12,6 +12,7 @@ namespace Exeptions
         {
             try
             {
+
                 int x = Convert.ToInt16(Console.ReadLine());
                 Console.WriteLine(x);
             }
