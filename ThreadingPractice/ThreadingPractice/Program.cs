@@ -13,18 +13,21 @@ namespace ThreadingPractice
         static void Main(string[] args)
         {
             Random rnd = new Random();
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 40; i++)
             {
                 ThreadPool.QueueUserWorkItem((object state) =>
                 {
-                    lock (rnd)
-                    {
-                        File.AppendAllText($@"temp{i}.txt", $"this is {i}th string\n");
-                        Thread.Sleep(rnd.Next(0, 200));
-                        Console.WriteLine(i);
-                    }
+                    
+                    //lock (rnd)
+                        {
+                        
+                        Thread.Sleep(rnd.Next(0, 2000));
+                        Console.WriteLine($"for {Thread.CurrentThread.ManagedThreadId} number is {i}");
+                        }
+                        
                     
                 });
+                File.AppendAllText($@"temp{i}.txt", $"this is {i}th string\n");
             }
 
             Console.ReadKey();
